@@ -1,0 +1,2155 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>[Rahat Shahrior] - Academic Website</title>
+
+    <link
+        href="https://fonts.googleapis.com/css2?family=Crimson+Text:wght@400;600;700&family=Nunito+Sans:wght@300;400;600;700&display=swap"
+        rel="stylesheet">
+
+    <!-- FontAwesome for original social icons -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+
+    <style>
+        /* ========================================
+           CSS VARIABLES - CUSTOMIZE COLORS HERE
+           ======================================== */
+        :root {
+            --primary-color: #000000;
+            /* Black primary color */
+            --accent-color: #008a9c;
+            /* Cyan accent color */
+            --text-dark: #111111;
+            --text-light: #555555;
+            --background: #ffffff;
+            --section-bg: #ffffff;
+            --border-color: #eeeeee;
+        }
+
+        /* ========================================
+           GENERAL STYLES
+           ======================================== */
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Nunito Sans', sans-serif;
+            line-height: 1.7;
+            color: var(--text-dark);
+            background: var(--background);
+        }
+
+        h1,
+        h2,
+        h3,
+        h4 {
+            font-family: 'Crimson Text', serif;
+            font-weight: 600;
+            margin-bottom: 1rem;
+            color: var(--primary-color);
+        }
+
+        h1 {
+            font-size: 2.5rem;
+        }
+
+        h2 {
+            font-size: 2rem;
+            border-bottom: 3px solid var(--accent-color);
+            padding-bottom: 0.5rem;
+            display: inline-block;
+            margin-bottom: 2rem;
+        }
+
+        h3 {
+            font-size: 1.5rem;
+        }
+
+        a {
+            color: var(--primary-color);
+            text-decoration: none;
+            transition: color 0.3s ease;
+        }
+
+        a:hover {
+            color: var(--accent-color);
+        }
+
+        /* ========================================
+           NAVIGATION
+           ======================================== */
+        nav {
+            background: #fafafa;
+            padding: 1rem 0;
+            position: sticky;
+            top: 0;
+            z-index: 100;
+            box-shadow: 0 2px 10px rgb(0, 0, 0, 1);
+        }
+
+        .nav-container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 2rem;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            gap: 4rem;
+        }
+
+        .logo {
+            font-family: 'Crimson Text', serif;
+            font-size: 1.8rem;
+            font-weight: 700;
+            color: var(--primary-color);
+            white-space: nowrap;
+        }
+
+        .nav-links {
+            display: flex;
+            gap: 2rem;
+            list-style: none;
+        }
+
+        .nav-links a {
+            color: var(--primary-color);
+            font-weight: 600;
+            padding: 0.5rem 1rem;
+            border-radius: 4px;
+            transition: background 0.3s ease;
+        }
+
+        .nav-links a:hover {
+            background: rgba(0, 0, 0, 0.05);
+        }
+
+        /* Mobile menu toggle */
+        .menu-toggle {
+            display: none;
+            background: none;
+            border: none;
+            color: var(--primary-color);
+            font-size: 1.5rem;
+            cursor: pointer;
+        }
+
+        /* ========================================
+           HERO SECTION
+           ======================================== */
+        .hero {
+            max-width: 1200px;
+            margin: 2rem auto;
+            padding: 0 2rem;
+            display: grid;
+            grid-template-columns: 1fr 250px;
+            gap: 3rem;
+            align-items: stretch;
+        }
+
+        .hero-sidebar {
+            order: 2;
+        }
+
+        .profile-image {
+            width: 250px;
+            height: 250px;
+            border-radius: 50%;
+            object-fit: cover;
+            border: 2px solid black;
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
+            animation: fadeIn 0.8s ease;
+            margin-top: 0.75rem;
+            filter: brightness(1.08);
+        }
+
+        .hero-content {
+            display: flex;
+            flex-direction: column;
+            justify-content: flex-start;
+            order: 1;
+        }
+
+        .hero-content h1 {
+            margin-bottom: 0.5rem;
+            animation: slideInRight 0.8s ease;
+        }
+
+        .title {
+            color: var(--text-dark);
+            font-size: 1.2rem;
+            margin-bottom: 0.8rem;
+            font-style: italic;
+            font-weight: bold;
+        }
+
+        .bio {
+            font-size: 1.05rem;
+            line-height: 1.535;
+            margin-bottom: 1.75rem;
+            font-family: Georgia, 'Times New Roman', Times, serif;
+            text-align: justify;
+            animation: slideInRight 0.8s ease 0.2s backwards;
+        }
+
+        .bio a {
+            color: var(--accent-color);
+            font-weight: bold;
+        }
+
+        .bio a:hover {
+            color: var(--primary-color);
+            text-decoration: underline;
+        }
+
+        /* Research Interests Section */
+        .research-interests {
+            margin-top: -2rem;
+            animation: slideInRight 0.8s ease 0.4s backwards;
+            grid-column: 1 / -1;
+            order: 3;
+        }
+
+        .research-interests h2 {
+            font-size: 1.8rem;
+            margin-bottom: 1.4rem;
+            border-bottom: none;
+            padding-bottom: 0;
+            color: var(--primary-color);
+            font-style: italic;
+        }
+
+        .interests-list {
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: space-between;
+            gap: 1rem 0;
+            list-style: none;
+            padding-left: 2.85rem;
+            /* Aligns with the 'R' after the icon */
+        }
+
+        .interests-list li {
+            width: calc(33.333% - 1rem);
+        }
+
+        .interests-list li {
+            position: relative;
+            padding-left: 1.2rem;
+            color: var(--primary-color);
+            font-weight: 700;
+            font-size: 1.15rem;
+        }
+
+        .interests-list li::before {
+            content: "•";
+            position: absolute;
+            left: 0;
+            top: 2px;
+            color: #d1d5db;
+            /* Light gray bullet */
+            font-size: 1.25rem;
+            line-height: 1;
+        }
+
+        .contact-links {
+            display: flex;
+            gap: 1rem;
+            margin-top: auto;
+            flex-wrap: wrap;
+        }
+
+        /* Social links under the profile photo */
+        .profile-social-links {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            gap: 0.5rem;
+            margin-top: 1.4rem;
+        }
+
+        .social-link {
+            display: flex;
+            align-items: center;
+            gap: 0.3rem;
+            width: 100%;
+            padding: 0.3rem 1rem;
+            border-radius: 5px;
+            border: 1px solid #ccc;
+            font-size: 0.95rem;
+            font-weight: 550;
+            color: var(--primary-color);
+            background: white;
+            transition: all 0.25s ease;
+            justify-content: center;
+        }
+
+        .social-link:hover {
+            background: var(--primary-color);
+            color: white;
+            border-color: #ccc;
+            transform: translateY(-2px);
+            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.12);
+        }
+
+        .btn {
+            padding: 0.75rem 1.5rem;
+            background: var(--primary-color);
+            color: white;
+            border-radius: 5px;
+            font-weight: 600;
+            transition: all 0.3s ease;
+            display: inline-block;
+        }
+
+        .btn:hover {
+            background: var(--accent-color);
+            transform: translateY(-2px);
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.2);
+        }
+
+        .btn-outline {
+            background: transparent;
+            border: 2px solid var(--primary-color);
+            color: var(--primary-color);
+        }
+
+        .btn-outline:hover {
+            background: var(--primary-color);
+            color: white;
+        }
+
+        .hero-btn {
+            padding: 0.5rem 1rem;
+            border-radius: 0 !important;
+            font-size: 0.95rem !important;
+            font-weight: 600;
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            gap: 0.5rem;
+            transition: all 0.2s ease;
+        }
+
+        .btn-cv {
+            background: black !important;
+            color: white !important;
+            border: 1px solid black !important;
+        }
+
+        .btn-cv:hover {
+            background: #333 !important;
+        }
+
+        .btn-pub {
+            background: white !important;
+            color: black !important;
+            border: 1px solid black !important;
+        }
+
+        .btn-pub:hover {
+            background: #f0f0f0 !important;
+        }
+
+        .btn-contact {
+            background: #f5f5f5 !important;
+            color: black !important;
+            border: 1px solid #f5f5f5 !important;
+        }
+
+        .btn-contact:hover {
+            background: #e5e5e5 !important;
+        }
+
+        /* ========================================
+           SECTION CONTAINERS
+           ======================================== */
+        section {
+            max-width: 1200px;
+            margin: 1.2rem auto;
+            padding: 0 2rem;
+            animation: fadeIn 1s ease;
+        }
+
+        .section-alt {
+            background: var(--section-bg);
+            padding: 1.2rem 2rem;
+            margin: 1.2rem 0;
+        }
+
+        /* ========================================
+           EXPERTISE SECTION
+           ======================================== */
+        .expertise-subsection {
+            margin-bottom: 2rem;
+        }
+
+        .expertise-category {
+            font-size: 1.2rem;
+            color: var(--accent-color);
+            border-left: 4px solid var(--accent-color);
+            padding-left: 1rem;
+            margin-bottom: 1rem;
+        }
+
+        .skill-capsules {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 0.6rem;
+        }
+
+        .skill-capsule {
+            display: inline-block;
+            padding: 0.4rem 1rem;
+            border: 1.5px solid var(--accent-color);
+            border-radius: 25px;
+            font-size: 0.85rem;
+            font-weight: 600;
+            color: var(--accent-color);
+            background: rgba(0, 188, 212, 0.05);
+            transition: all 0.3s ease;
+        }
+
+        .skill-capsule:hover {
+            background: var(--accent-color);
+            color: white;
+            transform: translateY(-2px);
+            box-shadow: 0 4px 12px rgba(0, 188, 212, 0.3);
+        }
+
+        /* ========================================
+           NEWS SECTION
+           ======================================== */
+        .news-grid {
+            display: grid;
+            gap: 1.5rem;
+        }
+
+        .news-item {
+            background: white;
+            padding: 1.5rem;
+            border-left: 4px solid var(--accent-color);
+            border-radius: 5px;
+            box-shadow: 0 2px 10px rgba(0, 0, 0, 0.05);
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+        }
+
+        .news-item:hover {
+            transform: translateX(5px);
+            box-shadow: 0 5px 20px rgba(0, 0, 0, 0.1);
+        }
+
+        .news-date {
+            color: var(--accent-color);
+            font-weight: 700;
+            font-size: 0.9rem;
+            margin-bottom: 0.5rem;
+        }
+
+        /* ========================================
+           PUBLICATIONS SECTION
+           ======================================== */
+        .publication-item {
+            background: white;
+            padding: 1rem;
+            margin-bottom: 1rem;
+            border-radius: 8px;
+            box-shadow: 0 2px 15px rgba(0, 0, 0, 0.08);
+            display: grid;
+            grid-template-columns: 150px 1fr;
+            gap: 1rem;
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+        }
+
+        .publication-item:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.15);
+        }
+
+        .pub-image {
+            width: 150px;
+            height: 150px;
+            object-fit: cover;
+            border-radius: 8px;
+            border: 2px solid var(--border-color);
+        }
+
+        .pub-title {
+            font-size: 1.3rem;
+            font-weight: 600;
+            color: var(--accent-color);
+            margin-bottom: 0.3rem;
+        }
+
+        .pub-title a {
+            color: var(--accent-color);
+        }
+
+        .pub-title a:hover {
+            color: var(--primary-color);
+            text-decoration: underline;
+        }
+
+        .pub-authors {
+            color: var(--text-light);
+            font-size: 0.95rem;
+            margin-bottom: 0.3rem;
+        }
+
+        .pub-venue {
+            font-style: italic;
+            color: var(--text-dark);
+            margin-bottom: 0.5rem;
+        }
+
+        .pub-links {
+            display: flex;
+            gap: 1rem;
+            flex-wrap: wrap;
+        }
+
+        .pub-link {
+            padding: 0.4rem 1rem;
+            background: var(--section-bg);
+            border-radius: 4px;
+            font-size: 0.9rem;
+            font-weight: 600;
+            transition: all 0.3s ease;
+        }
+
+        .pub-link:hover {
+            background: var(--accent-color);
+            color: white;
+        }
+
+        .pub-subsection {
+            margin-bottom: 1.5rem;
+        }
+
+        .pub-subsection h3 {
+            font-size: 1.6rem;
+            color: var(--accent-color);
+            border-left: 4px solid var(--accent-color);
+            padding-left: 1rem;
+            margin-bottom: 1rem;
+            font-style: italic;
+        }
+
+        /* ========================================
+           PROJECTS/RESEARCH SECTION
+           ======================================== */
+        .projects-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
+            gap: 1rem;
+        }
+
+        .project-card {
+            background: white;
+            border-radius: 8px;
+            overflow: hidden;
+            box-shadow: 0 2px 15px rgba(0, 0, 0, 0.08);
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+        }
+
+        .project-card:hover {
+            transform: translateY(-8px);
+            box-shadow: 0 15px 40px rgba(0, 0, 0, 0.15);
+        }
+
+        .project-image {
+            width: 100%;
+            height: 200px;
+            object-fit: cover;
+        }
+
+        .project-content {
+            padding: 1.5rem;
+        }
+
+        .project-title {
+            font-size: 1.05rem;
+            margin-bottom: 0.3rem;
+        }
+
+        .project-description {
+            color: var(--text-light);
+            line-height: 1.6;
+        }
+
+        /* ========================================
+           EDUCATION & EXPERIENCE SECTION
+           ======================================== */
+        .timeline {
+            position: relative;
+            padding-left: 2rem;
+        }
+
+        .timeline::before {
+            content: '';
+            position: absolute;
+            left: 0;
+            top: 0;
+            bottom: 0;
+            width: 3px;
+            background: var(--accent-color);
+        }
+
+        .timeline-item {
+            position: relative;
+            padding-left: 2rem;
+            margin-bottom: 1.5rem;
+        }
+
+        .timeline-item::before {
+            content: '';
+            position: absolute;
+            left: -2rem;
+            top: 0.5rem;
+            width: 15px;
+            height: 15px;
+            border-radius: 50%;
+            background: var(--accent-color);
+            border: 3px solid white;
+            box-shadow: 0 0 0 3px var(--accent-color);
+        }
+
+        .timeline-date {
+            color: var(--accent-color);
+            font-weight: 700;
+            font-size: 0.95rem;
+            margin-bottom: 0.5rem;
+        }
+
+        .timeline-title {
+            font-size: 1.3rem;
+            margin-bottom: 0.3rem;
+        }
+
+        .timeline-org {
+            color: var(--text-light);
+            font-style: italic;
+            margin-bottom: 0.8rem;
+        }
+
+        .timeline-description {
+            color: var(--text-dark);
+            line-height: 1.6;
+        }
+
+        .timeline-content-wrapper {
+            display: flex;
+            flex-direction: column;
+            gap: 1rem;
+            align-items: flex-start;
+        }
+
+        .timeline-content-wrapper .timeline-description {
+            flex: 1;
+        }
+
+        .exp-keywords {
+            display: flex;
+            flex-direction: row;
+            flex-wrap: wrap;
+            gap: 0.6rem;
+            margin-left: 1.5rem;
+            align-items: center;
+        }
+
+        .keyword-tag {
+            display: inline-block;
+            padding: 0.3rem 0.9rem;
+            border: 1.5px solid var(--accent-color);
+            border-radius: 20px;
+            font-size: 0.78rem;
+            font-weight: 600;
+            color: var(--accent-color);
+            background: rgba(0, 188, 212, 0.06);
+            white-space: nowrap;
+            transition: all 0.3s ease;
+        }
+
+        .keyword-tag:hover {
+            background: var(--accent-color);
+            color: white;
+        }
+
+        .timeline-description a,
+        .timeline-content-wrapper a {
+            color: var(--accent-color);
+            font-weight: 600;
+        }
+
+        .timeline-description a:hover,
+        .timeline-content-wrapper a:hover {
+            color: var(--primary-color);
+            text-decoration: underline;
+        }
+
+        .project-label {
+            font-weight: 700;
+            color: var(--accent-color);
+            font-size: 1.15rem;
+        }
+
+        .timeline-description p:has(.project-label) {
+            font-size: 1.15rem;
+        }
+
+        /* ========================================
+           CONTACT SECTION
+           ======================================== */
+        .contact-wrapper {
+            display: grid;
+            grid-template-columns: 1fr 1.5fr;
+            gap: 4rem;
+            margin-top: 2rem;
+            align-items: flex-start;
+        }
+
+        .contact-info {
+            display: flex;
+            flex-direction: column;
+            gap: 2rem;
+        }
+
+        .contact-info-block {
+            display: flex;
+            gap: 1rem;
+            align-items: flex-start;
+        }
+
+        .contact-info-icon {
+            color: #d1d5db;
+            font-size: 1.2rem;
+            margin-top: 0.1rem;
+        }
+
+        .contact-info-text {
+            display: flex;
+            flex-direction: column;
+        }
+
+        .contact-info-text h3 {
+            font-size: 1rem;
+            margin-bottom: 0.2rem;
+            color: var(--primary-color);
+            border-bottom: none;
+            padding-bottom: 0;
+            font-family: 'Nunito Sans', sans-serif;
+            font-weight: 700;
+        }
+
+        .contact-info-text p {
+            color: var(--text-light);
+            font-size: 0.95rem;
+            margin: 0;
+        }
+
+        .contact-form {
+            display: flex;
+            flex-direction: column;
+            gap: 1.5rem;
+        }
+
+        .form-group {
+            display: flex;
+            flex-direction: column;
+            gap: 0.5rem;
+        }
+
+        .form-group label {
+            font-weight: 700;
+            font-size: 0.95rem;
+            color: var(--primary-color);
+        }
+
+        .form-group input,
+        .form-group textarea {
+            width: 100%;
+            padding: 0.8rem;
+            border: 1px solid var(--primary-color);
+            background: white;
+            color: var(--text-dark);
+            font-family: inherit;
+            border-radius: 0;
+            font-size: 0.95rem;
+            resize: vertical;
+        }
+
+        .form-group input::placeholder,
+        .form-group textarea::placeholder {
+            color: #9ca3af;
+        }
+
+        .form-group input:focus,
+        .form-group textarea:focus {
+            outline: 2px solid var(--text-light);
+            border-color: transparent;
+        }
+
+        .btn-submit {
+            background: var(--primary-color);
+            color: white;
+            padding: 0.8rem 1.5rem;
+            border: none;
+            font-weight: 700;
+            cursor: pointer;
+            display: inline-flex;
+            align-items: center;
+            gap: 0.5rem;
+            align-self: flex-start;
+            transition: background 0.3s ease;
+        }
+
+        .btn-submit:hover {
+            background: var(--text-light);
+        }
+
+        @media (max-width: 768px) {
+            .contact-wrapper {
+                grid-template-columns: 1fr;
+                gap: 3rem;
+            }
+        }
+
+        /* ========================================
+           FOOTER
+           ======================================== */
+        footer {
+            background: var(--primary-color);
+            color: white;
+            text-align: center;
+            padding: 2rem;
+            margin-top: 4rem;
+        }
+
+        footer p {
+            margin: 0.5rem 0;
+        }
+
+        /* ========================================
+           ANIMATIONS
+           ======================================== */
+        @keyframes fadeIn {
+            from {
+                opacity: 0;
+            }
+
+            to {
+                opacity: 1;
+            }
+        }
+
+        @keyframes slideInRight {
+            from {
+                opacity: 0;
+                transform: translateX(-30px);
+            }
+
+            to {
+                opacity: 1;
+                transform: translateX(0);
+            }
+        }
+
+        /* ========================================
+           PUBLICATIONS LIST SECTION
+           ======================================== */
+        .pub-list-container {
+            border: 1px solid var(--border-color);
+            background: white;
+            padding: 0;
+            margin-top: 1rem;
+        }
+
+        .pub-list-tabs {
+            display: flex;
+            gap: 1.5rem;
+            margin: 0;
+            background-color: #f9fafb;
+            padding: 1rem 1.5rem;
+            border-bottom: 1px solid var(--border-color);
+            overflow-x: auto;
+        }
+
+        .pub-tab {
+            border: none;
+            background: none;
+            cursor: pointer;
+            font-weight: 600;
+            color: var(--text-light);
+            transition: color 0.2s;
+            font-size: 1rem;
+            white-space: nowrap;
+        }
+
+        .pub-tab.active {
+            color: var(--primary-color);
+        }
+
+        .pub-list-item {
+            display: flex;
+            justify-content: space-between;
+            align-items: flex-start;
+            padding: 0.5rem;
+            border-bottom: 1px solid var(--border-color);
+        }
+
+        .pub-list-item:last-child {
+            border-bottom: none;
+        }
+
+        .pub-list-content {
+            flex: 1;
+            padding-right: 2rem;
+        }
+
+        .pub-list-title {
+            font-size: 1rem;
+            font-weight: 700;
+            color: var(--text-dark);
+            margin-bottom: 0.3rem;
+            line-height: 1.4;
+        }
+
+        .pub-list-authors {
+            font-size: 1rem;
+            color: var(--text-light);
+            margin-bottom: 0.2rem;
+        }
+
+        .pub-list-venue {
+            font-size: 1rem;
+            font-style: italic;
+            color: var(--text-light);
+        }
+
+        .pub-list-actions {
+            display: flex;
+            gap: 1rem;
+            align-items: center;
+            color: var(--text-dark);
+            padding-top: 0.2rem;
+        }
+
+        .pub-action-btn {
+            background: none;
+            border: none;
+            color: var(--text-dark);
+            cursor: pointer;
+            font-size: 1.1rem;
+            text-decoration: none;
+            transition: color 0.2s;
+        }
+
+        .pub-action-btn:hover {
+            color: var(--accent-color);
+        }
+
+        /* ========================================
+           RESPONSIVE DESIGN
+           ======================================== */
+        @media (max-width: 768px) {
+            .hero {
+                grid-template-columns: 1fr;
+                text-align: center;
+            }
+
+            .hero-sidebar {
+                order: 1;
+            }
+
+            .hero-content {
+                order: 2;
+            }
+
+            .profile-image {
+                margin: 0 auto;
+            }
+
+            .nav-links {
+                display: none;
+                flex-direction: column;
+                position: absolute;
+                top: 100%;
+                left: 0;
+                right: 0;
+                background: #fafafa;
+                padding: 1rem;
+            }
+
+            .nav-links.active {
+                display: flex;
+            }
+
+            .menu-toggle {
+                display: block;
+            }
+
+            .publication-item {
+                grid-template-columns: 1fr;
+            }
+
+            .pub-image {
+                margin: 0 auto;
+            }
+
+            .projects-grid {
+                grid-template-columns: 1fr;
+            }
+
+            h1 {
+                font-size: 2rem;
+            }
+
+            h2 {
+                font-size: 1.5rem;
+            }
+        }
+    </style>
+</head>
+
+<body>
+    <!-- ========================================
+         NAVIGATION BAR
+         Edit the menu items below
+         ======================================== -->
+    <nav>
+        <div class="nav-container">
+            <div class="logo">Rahat Shahrior</div>
+            <button class="menu-toggle" onclick="toggleMenu()">☰</button>
+            <ul class="nav-links" id="navLinks">
+                <li><a href="#about">About</a></li>
+                <li><a href="#experience">Experience</a></li>
+                <li><a href="#full-publications-list">Publications</a></li>
+                <li><a href="#projects">Projects</a></li>
+                <li><a href="#education">Education</a></li>
+                <li><a href="#extracurricular">Extracurriculars</a></li>
+                <li><a href="#news">News</a></li>
+                <li><a href="#contact">Contact</a></li>
+            </ul>
+        </div>
+    </nav>
+
+    <!-- ========================================
+         HERO SECTION (Main introduction)
+         INSTRUCTIONS:
+         1. Replace profile.jpg with your photo
+         2. Replace [YOUR NAME] with your name
+         3. Replace [YOUR TITLE] with your current position
+         4. Replace [YOUR BIO] with your biography
+         5. Update email and CV links
+         ======================================== -->
+    <section class="hero" id="about">
+        <!-- left column -->
+        <div class="hero-sidebar" style="display: flex; flex-direction: column; align-items: center;">
+            <!-- REPLACE THIS IMAGE: Save your photo as 'profile.jpg' in the same folder -->
+            <img src="Rahat Image.png" alt="Profile Photo" class="profile-image">
+
+            <!-- Academic profile links under photo -->
+            <div class="profile-social-links" style="width: 100%;">
+                <a href="https://scholar.google.com/citations?user=CaOCa9sAAAAJ&hl=en&oi=ao" target="_blank"
+                    class="social-link"><i class="fa-solid fa-graduation-cap"></i> Google Scholar</a>
+                <a href="https://www.linkedin.com/in/rsomi1715005/" target="_blank" class="social-link"><i
+                        class="fa-brands fa-linkedin"></i> LinkedIn</a>
+                <a href="https://orcid.org/0000-0002-9173-3386" target="_blank" class="social-link"><i
+                        class="fa-brands fa-orcid"></i> ORCID</a>
+                <a href="https://github.com/RSOmi05" target="_blank" class="social-link"><i
+                        class="fa-brands fa-github"></i> GitHub</a>
+                <a href="https://www.researchgate.net/profile/Rahat-Shahrior" target="_blank" class="social-link"><i
+                        class="fa-brands fa-researchgate"></i> ResearchGate</a>
+                <a href="mailto:" class="social-link"><i class="fa-solid fa-envelope"></i> Email Me</a>
+            </div>
+        </div>
+
+        <div class="hero-content">
+            <h1>Rahat Shahrior</h1>
+            <p class="title">Biomedical Engineering Graduate | AI Researcher | Computational Biologist</p>
+
+            <div class="bio">
+                <p>
+                    Hello! I am Rahat, a Biomedical Engineering graduate from Khulna University of Engineering &
+                    Technology (KUET), specializing in machine learning, computational biology, and intelligent
+                    healthcare systems using natural language processing. Over the past 6 years, I have gained both
+                    technical foundation and hands-on training in AI-driven Biomedical research, demonstrated in my
+                    contributions to ten publications in peer-reviewed journal articles, including <a
+                        href="https://doi.org/10.1016/j.cmpb.2025.108793">Computer Methods and Programs in
+                        Biomedicine</a>, <a href="https://www.nature.com/articles/s41598-024-84301-7">Scientific
+                        Reports</a>, <a href="https://ieeeaccess.ieee.org/">IEEE Access</a>, and <a
+                        href="https://www.mdpi.com/2306-5354/10/4/413">Bioengineering</a> etc.
+                    My prior research included advanced deep learning architectures, including CNNs and
+                    transformer-based models, computer vision, and computer-aided drug discovery techniques to address
+                    complex challenges in cancer therapeutics development, medical imaging, and clinical decision
+                    support. Currently, I am serving as the Jr. Research Associate at Institution of Research,
+                    Innovation, Incubation & Commercialization (IRIIC), United International University (UIU),
+                    working to develop an advanced NLP pipeline for an AI-powered medical scribing system for
+                    streamlined clinical documentation and digital health applications for prescription counseling.
+                </p>
+
+                <p>
+                    I am actively looking for <strong>fully-funded Graduate (Ph.D / Masters) positions</strong> in
+                    research labs, focusing on cutting edge AI-driven biomedical research, computational biology,
+                    and
+                    drug-discovery around the globe.
+                </p>
+            </div>
+
+            <div class="contact-links" style="gap: 1rem;">
+                <a href="Academic CV_Rahat Shahrior.pdf" class="btn hero-btn btn-cv"><i
+                        class="fa-regular fa-file-lines"></i> Download CV</a>
+                <a href="#full-publications-list" class="btn hero-btn btn-pub">View Publications</a>
+                <a href="#contact" class="btn hero-btn btn-contact">Contact Me</a>
+            </div>
+        </div>
+
+        <!-- Research Interests -->
+        <div class="research-interests" id="research-interests-anchor">
+            <h2><i class="fa-solid fa-microscope" style="margin-right: 1.2rem;"></i>Research Interests</h2>
+            <ul class="interests-list">
+                <li>Deep Learning Architectures</li>
+                <li>AI in Drug Discovery</li>
+                <li>Computer Vision</li>
+                <li>Biomedical Image Processing</li>
+                <li>Structural Bioinformatics</li>
+                <li>Natural Language Processing</li>
+            </ul>
+        </div>
+    </section>
+
+    <!-- ========================================
+         EXPERIENCE SECTION
+         INSTRUCTIONS:
+         Copy the timeline-item div for each position
+         ======================================== -->
+    <div class="section-alt">
+        <section id="experience">
+            <h2>💼 Experience</h2>
+            <div class="timeline">
+                <!-- EXPERIENCE ITEM 1 - Copy for more positions -->
+                <div class="timeline-item">
+                    <div class="timeline-date">2025 – Present</div>
+                    <h3 class="timeline-title">Jr. Research Associate</h3>
+                    <div class="timeline-org">Institute of Research, Innovation, Incubation & Commercialization (IRIIC),
+                        United International University (UIU)</div>
+                    <div class="timeline-description">
+                        <p><span class="project-label">Project:</span> <em>"AIMScribe: AI-Driven Scribing System
+                                with
+                                Prescription Counseling Tools to Streamline Clinical Documentation, Enhance
+                                Medication
+                                Safety and Patient Empowerment in Bangladesh"</em>.
+                        </p>
+                    </div>
+                    <div class="timeline-content-wrapper">
+                        <ul style="margin-top: 0.5rem; margin-left: 1.5rem; flex: 1;">
+                            <li> Received a funding of <a
+                                    href="https://www.tbsnews.net/economy/corporates/uiu-secures-research-fund-ugc-1226146">4.95
+                                    crore BDT ($0.4 million USD) from the World Bank</a>, under the <a
+                                    href="https://heat.ugc.gov.bd/">HEAT Initiatives</a> in August 2025.
+                            </li>
+
+                            <li> Building robust NLP pipelines incorporating Automated Speech Recognition (ASR),
+                                Named
+                                Entity Recognition (NER), and Text Summarization model from ground researchwork to
+                                clinical
+                                deployment.
+                            </li>
+
+                            <li>Optimizing doctor-patient counceling protocol to create a
+                                comprehensive Bengali clinical dataset for medical scribing.
+                            </li>
+                            <li>Designing an agentic framework for clinical named entity recognition from audio
+                                transcripts with precision.</li>
+                            <li>Implementing speech-to-text models for transcribing doctor-patient consultation
+                                audio in
+                                real time.</li>
+
+                        </ul>
+                        <div class="exp-keywords">
+                            <span class="keyword-tag">Large Language Models</span>
+                            <span class="keyword-tag">Automated Speech Recognition</span>
+                            <span class="keyword-tag">Text-to-Speech</span>
+                            <span class="keyword-tag">Retrieval Augmented Generation</span>
+                            <span class="keyword-tag">Named Entity Recognition</span>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- EXPERIENCE ITEM 2 -->
+                <div class="timeline-item">
+                    <div class="timeline-date">2025 – Present</div>
+                    <h3 class="timeline-title">Research Engineer (NLP)</h3>
+                    <div class="timeline-org">Advanced Intelligent Multidisciplinary System Lab (AIMS Lab), United
+                        International University (UIU)</div>
+                    <div class="timeline-description">
+                        <p><span class="project-label">Project:</span> <em>"PrescriptionGPT: An AI-powered
+                                m-healthcare
+                                platform for enhanced medication safety, adherence tracking and personalized
+                                prescription counseling through context-aware, localized conversational AI and
+                                pharmacovigilance."</em>.
+                        </p>
+                    </div>
+                    <div class="timeline-content-wrapper">
+                        <ul style="margin-top: 0.5rem; margin-left: 1.5rem; flex: 1;">
+                            <li>Creating a comprehensive research database of ≥50,000 Bangladeshi prescriptions
+                                covering
+                                diverse medications, disease conditions, patient demographics, and prescription
+                                patterns.
+                            </li>
+                            <li>Designing a <stronger>RAG-based framework</stronger>, integrated with <stronger>
+                                    Drug-Drug Interaction (DDI) knowledge graphs</stronger> and <stronger>OCR
+                                    technology
+                                </stronger> for prescription interpretation, clinical NER and analysis in
+                                bilingual format.
+                            </li>
+                            <li>Developing an empathetic <stronger>conversational AI agent</stronger> for providing
+                                context-aware
+                                prescription counseling in
+                                both text & speech format.
+                            </li>
+                        </ul>
+                        <div class="exp-keywords">
+                            <span class="keyword-tag">Optical Character Recognition</span>
+                            <span class="keyword-tag">Retrieval Augmented Generation</span>
+                            <span class="keyword-tag">Drug-Drug Interaction</span>
+                            <span class="keyword-tag">Named Entity Recognition</span>
+                            <span class="keyword-tag">Agentic AI</span>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- EXPERIENCE ITEM 3 -->
+                <div class="timeline-item">
+                    <div class="timeline-date">2025 – Present</div>
+                    <h3 class="timeline-title">Research Assistant (Remote)</h3>
+                    <div class="timeline-org">ELITE Research Lab LLC, Queens, New York, USA</div>
+                    <div class="timeline-description">
+                        <p><span class="project-label">Project:</span> <em>"Overcoming resistance bypass strategy for
+                                treating NSCLC through dual targeted
+                                de-novo drug design with EGFR MET proteins-conditioned transformer-based reinforcement
+                                learning."</em>.
+                        </p>
+                    </div>
+                    <div class="timeline-content-wrapper">
+                        <ul style="margin-top: 0.5rem; margin-left: 1.5rem; flex: 1;">
+                            <li>Designed a transformer-based reinforcement learning framework for automated dual-target
+                                de-novo drug design
+                                by targeting both EGFR and MET proteins to overcome the bypass drug resistance mechanism
+                                in the treatment of Non-Small Cell Lung cancer (NSCLC).
+                            </li>
+                        </ul>
+                        <div class="exp-keywords">
+                            <span class="keyword-tag">Chemical Language Models</span>
+                            <span class="keyword-tag">Reinforcement Learning</span>
+                            <span class="keyword-tag">De Novo Drug Design</span>
+                            <span class="keyword-tag">AlphaFold2 Model</span>
+                            <span class="keyword-tag">Molecular Docking</span>
+                            <span class="keyword-tag">ADMET Profiling</span>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- EXPERIENCE ITEM 4 -->
+                <div class="timeline-item">
+                    <div class="timeline-date">2023 – 2024</div>
+                    <h3 class="timeline-title">Research & Development Executive</h3>
+                    <div class="timeline-org">The Royal Scientific Publications</div>
+                </div>
+            </div>
+
+    </div>
+
+    </section>
+
+
+    <!-- ========================================
+         ALL PUBLICATIONS LIST
+         ======================================== -->
+    <section id="full-publications-list">
+        <h2>📑 Publications</h2>
+
+        <div class="pub-list-container">
+            <div class="pub-list-tabs">
+                <button class="pub-tab active" data-filter="all">All</button>
+                <button class="pub-tab" data-filter="journal">Journal Articles</button>
+                <button class="pub-tab" data-filter="conference">Conference Papers</button>
+                <button class="pub-tab" data-filter="book">Book Chapters</button>
+                <button class="pub-tab" data-filter="working">Working Papers</button>
+            </div>
+
+            <!-- AKT2 -->
+            <div class="pub-list-item" data-category="journal">
+                <div class="pub-list-content">
+                    <div class="pub-list-title"><a href="https://doi.org/10.1016/j.cmpb.2025.108793" target="_blank"
+                            style="color: inherit; text-decoration: none;">In-silico investigation integrated with
+                            machine learning to identify
+                            potential inhibitors targeting AKT2: Key driver of cancer cell progression and
+                            metastasis</a></div>
+                    <div class="pub-list-authors"><strong style="color: var(--text-dark);">Rahat Shahrior</strong>,
+                        Salwa Tamkin, Mohammad Badhruddouza Khan, Ahmed Jebail
+                        Meraj, Hanif Bhuiyan</div>
+                    <div class="pub-list-venue"><a href="https://doi.org/10.1016/j.cmpb.2025.108793"
+                            style="color: #00bcd4; text-decoration: none;">Computer Methods and Programs in
+                            Biomedicine</a>, Elsevier, 2025</div>
+                </div>
+                <div class="pub-list-actions">
+                    <a href="#pub-akt2" class="pub-action-btn" title="View in Prior Research"><i
+                            class="fa-solid fa-arrow-up-right-from-square"></i></a>
+                    <a href="https://doi.org/10.1016/j.cmpb.2025.108793" target="_blank" class="pub-action-btn"
+                        title="DOI"><i class="fa-regular fa-file-lines"></i></a>
+                    <button class="pub-action-btn" title="Copy Citation"
+                        onclick="copyCitation('Shahrior, R., Tamkin, S., Khan, M. B., Meraj, A. J., & Bhuiyan, H. (2025). In-silico investigation integrated with machine learning to identify potential inhibitors targeting AKT2: Key driver of cancer cell progression and metastasis. Computer Methods and Programs in Biomedicine, 108793.')"><i
+                            class="fa-regular fa-copy"></i></button>
+                    <button class="pub-action-btn"><i class="fa-solid fa-chevron-down"></i></button>
+                </div>
+            </div>
+
+            <!-- PLID -->
+            <div class="pub-list-item" data-category="journal">
+                <div class="pub-list-content">
+                    <div class="pub-list-title"><a href="https://www.nature.com/articles/s41598-024-84301-7"
+                            target="_blank" style="color: inherit; text-decoration: none;">Automatic detection,
+                            classification, and segmentation of sagittal MR
+                            images for diagnosing prolapsed lumbar intervertebral disc</a></div>
+                    <div class="pub-list-authors">Md. Abu Sayed, G. Mahmudur Rahman, Md. Sherajul Islam, Md. Alimul
+                        Islam, Jeongwon Park, Hasan Ahmed and <strong style="color: var(--text-dark);">Rahat
+                            Shahrior</strong></div>
+                    <div class="pub-list-venue"><a href="https://www.nature.com/articles/s41598-024-84301-7"
+                            style="color: #00bcd4; text-decoration: none;">Scientific Reports</a>, Nature Portfolio,
+                        2025</div>
+                </div>
+                <div class="pub-list-actions">
+                    <a href="#pub-plid" class="pub-action-btn" title="View in Prior Research"><i
+                            class="fa-solid fa-arrow-up-right-from-square"></i></a>
+                    <a href="https://www.nature.com/articles/s41598-024-84301-7" target="_blank" class="pub-action-btn"
+                        title="DOI"><i class="fa-regular fa-file-lines"></i></a>
+                    <button class="pub-action-btn" title="Copy Citation"
+                        onclick="copyCitation('Sayed, M. A., Rahman, G. M., Islam, M. S., Islam, M. A., Park, J., Ahmed, H., & Shahrior, R. (2025). Automatic detection, classification, and segmentation of sagittal MR images for diagnosing prolapsed lumbar intervertebral disc. Scientific Reports, Nature Portfolio.')"><i
+                            class="fa-regular fa-copy"></i></button>
+                    <button class="pub-action-btn"><i class="fa-solid fa-chevron-down"></i></button>
+                </div>
+            </div>
+
+            <!-- DR -->
+            <div class="pub-list-item" data-category="journal">
+                <div class="pub-list-content">
+                    <div class="pub-list-title"><a href="https://www.mdpi.com/2306-5354/10/4/413" target="_blank"
+                            style="color: inherit; text-decoration: none;">Automated Diagnosis of Diabetic Retinopathy
+                            Using Deep Learning: On the
+                            Search of Segmented Retinal Blood Vessel Images for Better Performance</a></div>
+                    <div class="pub-list-authors">Mohammad B. Khan, Mohiuddin Ahmad, Shamshul B. Yaakob, <strong
+                            style="color: var(--text-dark);">Rahat Shahrior</strong>,
+                        Mohd A. Rashid, and Hiroki Higa</div>
+                    <div class="pub-list-venue"><a href="https://www.mdpi.com/2306-5354/10/4/413"
+                            style="color: #00bcd4; text-decoration: none;">Bioengineering</a>, MDPI, 2024</div>
+                </div>
+                <div class="pub-list-actions">
+                    <a href="#pub-dr" class="pub-action-btn" title="View in Prior Research"><i
+                            class="fa-solid fa-arrow-up-right-from-square"></i></a>
+                    <a href="https://www.mdpi.com/2306-5354/10/4/413" target="_blank" class="pub-action-btn"
+                        title="DOI"><i class="fa-regular fa-file-lines"></i></a>
+                    <button class="pub-action-btn" title="Copy Citation"
+                        onclick="copyCitation('Khan, M. B., Ahmad, M., Yaakob, S. B., Shahrior, R., Rashid, M. A., & Higa, H. (2024). Automated Diagnosis of Diabetic Retinopathy Using Deep Learning: On the Search of Segmented Retinal Blood Vessel Images for Better Performance. Bioengineering, MDPI.')"><i
+                            class="fa-regular fa-copy"></i></button>
+                    <button class="pub-action-btn"><i class="fa-solid fa-chevron-down"></i></button>
+                </div>
+            </div>
+
+            <!-- PrivacyPreserveNet -->
+            <div class="pub-list-item" data-category="journal">
+                <div class="pub-list-content">
+                    <div class="pub-list-title"><a href="https://dx.doi.org/10.2139/ssrn.4980018" target="_blank"
+                            style="color: inherit; text-decoration: none;">Privacypreservenet: A Privacy Preserving
+                            Interpretable Deep Learning
+                            Model for Multiple Ocular Diseases Classification</a></div>
+                    <div class="pub-list-authors">Mohammad B. Khan, Mohiuddin Ahmad, <strong
+                            style="color: var(--text-dark);">Rahat Shahrior</strong>, Md Mahmudul Hasan,
+                        Mohd Abdur Rashid</div>
+                    <div class="pub-list-venue"><a href="https://dx.doi.org/10.2139/ssrn.4980018"
+                            style="color: #00bcd4; text-decoration: none;">IEEE Access</a>, 2024</div>
+                </div>
+                <div class="pub-list-actions">
+                    <a href="#pub-privacy" class="pub-action-btn" title="View in Prior Research"><i
+                            class="fa-solid fa-arrow-up-right-from-square"></i></a>
+                    <a href="https://dx.doi.org/10.2139/ssrn.4980018" target="_blank" class="pub-action-btn"
+                        title="DOI"><i class="fa-regular fa-file-lines"></i></a>
+                    <button class="pub-action-btn" title="Copy Citation"
+                        onclick="copyCitation('Khan, M. B., Ahmad, M., Shahrior, R., Hasan, M. M., & Rashid, M. A. (2024). Privacypreservenet: A Privacy Preserving Interpretable Deep Learning Model for Multiple Ocular Diseases Classification. IEEE Access.')"><i
+                            class="fa-regular fa-copy"></i></button>
+                    <button class="pub-action-btn"><i class="fa-solid fa-chevron-down"></i></button>
+                </div>
+            </div>
+
+            <!-- AXL -->
+            <div class="pub-list-item" data-category="conference">
+                <div class="pub-list-content">
+                    <div class="pub-list-title"><a href="https://ieeexplore.ieee.org/document/9733504" target="_blank"
+                            style="color: inherit; text-decoration: none;">Predicting AXL Inhibition of Chemicals using
+                            Molecular Descriptors
+                            andMachine Learning Methods</a></div>
+                    <div class="pub-list-authors">Mohammad B. Khan, <strong style="color: var(--text-dark);">Rahat
+                            Shahrior</strong>, Ramisa Tasnia Asha and
+                        Pranto Soumik Saha</div>
+                    <div class="pub-list-venue"><a href="https://ieeexplore.ieee.org/document/9733504"
+                            style="color: #00bcd4; text-decoration: none;">International Conference on Electrical
+                            Information and Communication Technology (EICT)</a>, 2021</div>
+                </div>
+                <div class="pub-list-actions">
+                    <a href="#pub-axl" class="pub-action-btn" title="View in Prior Research"><i
+                            class="fa-solid fa-arrow-up-right-from-square"></i></a>
+                    <a href="https://ieeexplore.ieee.org/document/9733504" target="_blank" class="pub-action-btn"
+                        title="DOI"><i class="fa-regular fa-file-lines"></i></a>
+                    <button class="pub-action-btn" title="Copy Citation"
+                        onclick="copyCitation('Khan, M. B., Shahrior, R., Asha, R., & Saha, P. S. (2021). Predicting AXL Inhibition of Chemicals using Molecular Descriptors andMachine Learning Methods. International Conference on Electrical Information and Communication Technology (EICT).')"><i
+                            class="fa-regular fa-copy"></i></button>
+                    <button class="pub-action-btn"><i class="fa-solid fa-chevron-down"></i></button>
+                </div>
+            </div>
+
+            <!-- Leukocytes -->
+            <div class="pub-list-item" data-category="book">
+                <div class="pub-list-content">
+                    <div class="pub-list-title"><a href="https://link.springer.com/chapter/10.1007/978-981-16-0586-4_6"
+                            target="_blank" style="color: inherit; text-decoration: none;">A CNN Based Deep Learning
+                            Approach for Leukocytes Classification in
+                            Peripheral Blood from Microscopic Smear Blood Images</a></div>
+                    <div class="pub-list-authors">Mohammad B. Khan, Tobibul Islam, Mohiuddin Ahmad, <strong
+                            style="color: var(--text-dark);">Rahat Shahrior</strong>
+                        and Zannatun Naiem Riya</div>
+                    <div class="pub-list-venue"><a href="https://link.springer.com/chapter/10.1007/978-981-16-0586-4_6"
+                            style="color: #00bcd4; text-decoration: none;">Algorithms for Intelligent Systems</a>, 2021
+                    </div>
+                </div>
+                <div class="pub-list-actions">
+                    <a href="#pub-leuko" class="pub-action-btn" title="View in Prior Research"><i
+                            class="fa-solid fa-arrow-up-right-from-square"></i></a>
+                    <a href="https://link.springer.com/chapter/10.1007/978-981-16-0586-4_6" target="_blank"
+                        class="pub-action-btn" title="DOI"><i class="fa-regular fa-file-lines"></i></a>
+                    <button class="pub-action-btn" title="Copy Citation"
+                        onclick="copyCitation('Khan, M. B., Islam, T., Ahmad, M., Shahrior, R., & Riya, Z. N. (2021). A CNN Based Deep Learning Approach for Leukocytes Classification in Peripheral Blood from Microscopic Smear Blood Images. Algorithms for Intelligent Systems.')"><i
+                            class="fa-regular fa-copy"></i></button>
+                    <button class="pub-action-btn"><i class="fa-solid fa-chevron-down"></i></button>
+                </div>
+            </div>
+
+            <!-- Breast Cancer Metastasis -->
+            <div class="pub-list-item" data-category="conference">
+                <div class="pub-list-content">
+                    <div class="pub-list-title"><a href="https://ieeexplore.ieee.org/document/9641195" target="_blank"
+                            style="color: inherit; text-decoration: none;">Feasible Detection of Breast Cancer
+                            Metastasis using a CNN-based Deep
+                            Learning Model</a></div>
+                    <div class="pub-list-authors">Mohammad B. Khan, Pranto S. Saha and <strong
+                            style="color: var(--text-dark);">Rahat Shahrior</strong></div>
+                    <div class="pub-list-venue"><a href="https://ieeexplore.ieee.org/document/9641195"
+                            style="color: #00bcd4; text-decoration: none;">International Conference on Electronics,
+                            Communications and Information Technology (ICECIT)</a>, 2021</div>
+                </div>
+                <div class="pub-list-actions">
+                    <a href="#pub-bc" class="pub-action-btn" title="View in Prior Research"><i
+                            class="fa-solid fa-arrow-up-right-from-square"></i></a>
+                    <a href="https://ieeexplore.ieee.org/document/9641195" target="_blank" class="pub-action-btn"
+                        title="DOI"><i class="fa-regular fa-file-lines"></i></a>
+                    <button class="pub-action-btn" title="Copy Citation"
+                        onclick="copyCitation('Khan, M. B., Saha, P. S., & Shahrior, R. (2021). Feasible Detection of Breast Cancer Metastasis using a CNN-based Deep Learning Model. International Conference on Electronics, Communications and Information Technology (ICECIT).')"><i
+                            class="fa-regular fa-copy"></i></button>
+                    <button class="pub-action-btn"><i class="fa-solid fa-chevron-down"></i></button>
+                </div>
+            </div>
+
+        </div>
+    </section>
+
+    <!-- ========================================
+         RESEARCH/PROJECTS SECTION
+         INSTRUCTIONS:
+         1. Save project images as project1.jpg, project2.jpg, etc.
+         2. Copy the project-card div for each project
+         ======================================== -->
+    <div class="section-alt">
+        <section id="projects">
+            <h2>🔬 Projects</h2>
+            <div class="projects-grid">
+                <!-- PROJECT 1 - Copy this div for more projects -->
+                <div class="project-card">
+                    <img src="AIMScribe.png" alt="Project 1" class="project-image">
+                    <div class="project-content">
+                        <h3 class="project-title"> AIMScribe: AI-Driven Scribing System with Prescription Counseling
+                            Tools to Streamline Clinical Documentation, Enhance Medication Safety, and Patient
+                            Empowerment in Bangladesh</h3>
+                    </div>
+                </div>
+
+                <!-- PROJECT 2 -->
+                <div class="project-card">
+                    <img src="De Novo.jpg" alt="Project 2" class="project-image">
+                    <div class="project-content">
+                        <h3 class="project-title">Overcoming Resistance Bypass Strategy for Treating NSCLC through
+                            Dual Targeted De-Novo Drug Design
+                            with EGFR/MET Proteins-conditioned Transformer-based Reinforcement Learning</h3>
+                    </div>
+                </div>
+
+                <!-- PROJECT 3 -->
+                <div class="project-card">
+                    <img src="PrescriptionGPT.jpg" alt="Project 3" class="project-image">
+                    <div class="project-content">
+                        <h3 class="project-title">An AI-powered m-healthcare Platform for Enhanced Medication
+                            Safety, Adherence Tracking and Personalized Prescription Counselling through
+                            Context-aware, Localized Conversational AI and Pharmacovigilance.</h3>
+                    </div>
+                </div>
+                <!-- PROJECT 4 -->
+                <div class="project-card">
+                    <img src="Echo.png" alt="Project 3" class="project-image">
+                    <div class="project-content">
+                        <h3 class="project-title">Transformer-based Language Model Fusion for
+                            Automated Severity Classification of Color Doppler
+                            Echocardiography Reports</h3>
+                    </div>
+                </div>
+
+                <!-- PROJECT 5 -->
+                <div class="project-card">
+                    <img src="Bone.png" alt="Project 3" class="project-image">
+                    <div class="project-content">
+                        <h3 class="project-title">Longitudinal Bone Growth Modeling Using Cross-sectional X-ray
+                            Images: Overcoming the Necessity for
+                            Longitudinal Bone X-ray Dataset with Generative AI and Adversarial Learning. </h3>
+                    </div>
+                </div>
+                <!-- PROJECT 6 -->
+                <div class="project-card">
+                    <img src="CropDisNet.png" alt="Project 3" class="project-image">
+                    <div class="project-content">
+                        <h3 class="project-title">CropDisNet: An AI-Based Platform for Disease Detection and
+                            Advancing On-Farm Privacy Solutions</h3>
+                    </div>
+                </div>
+
+                <!-- ADD MORE PROJECTS BY COPYING THE ABOVE DIV -->
+            </div>
+    </div>
+    </section>
+    </div>
+
+    <!-- ========================================
+         PUBLICATIONS SECTION
+         INSTRUCTIONS:
+         1. Save publication images as pub1.jpg, pub2.jpg, etc.
+         2. Copy the publication-item div for each paper
+         3. Update title, authors, venue, and links
+         ======================================== -->
+    <section id="publications">
+        <h2>📚 Research Works by Areas</h2>
+
+        <!-- SUBSECTION 1 -->
+        <div class="pub-subsection">
+            <h3>AI-driven Drug Discovery & Computational Biology</h3>
+
+            <div class="publication-item" id="pub-akt2">
+                <img src="Biomedicine.png" alt="Publication 1" class="pub-image">
+                <div class="pub-details">
+                    <div class="pub-title"><a href="https://doi.org/10.1016/j.cmpb.2025.108793">"In-silico
+                            investigation
+                            integrated with machine learning to identify potential inhibitors targeting AKT2: Key
+                            driver
+                            of cancer cell progression and metastasis"</a></div>
+                    <div class="pub-authors"> <strong>Rahat Shahrior</strong>, Salwa Tamkin, Mohammad Badhruddouza
+                        Khan,
+                        Ahmed Jebail Meraj, Hanif Bhuiyan</div>
+                    <div class="pub-venue"><a
+                            href="https://www.sciencedirect.com/journal/computer-methods-and-programs-in-biomedicine">Computer
+                            Methods and Programs in Biomedicine</a>, Elsevier, 2025</div>
+                    <p class="pub-description">Background and Objective: In search of a key driver for the invasive
+                        growth of cancer metastasis, AKT2 is found to be exceptionally expressed in colorectal
+                        cancer
+                        and its metastasis. Again, exceeding genomic arrangements of AKT2 can be held responsible
+                        for
+                        HGSC (High-grade serous ovarian cancer) and breast cancer cell metastasis. FDA-approved
+                        capivasertib, a potential drug targeting the AKT signaling pathway, has a few side effects
+                        such
+                        as plausible alterations of liver function and gastrointestinal issues. Hence, this research
+                        aims to detect compounds with higher drug potency for selective AKT2 inhibition to encounter
+                        the
+                        incidence of different types of cancer cell metastasis. Methods: Eight machine-learning
+                        models
+                        were engaged to classify active and inactive drug candidates among 1148 collected compounds
+                        from
+                        the CHEMBL database. Potential drug candidates with greater IC50 value and no Lipinski
+                        violations were then addressed to molecular docking and molecular dynamics simulation using
+                        PyRx, AutoDock Vina and Desmond package. Results: From docking studies, three of the initial
+                        drug candidates provided greater binding affinities within a range from -10.9 to -9.8
+                        kcal/mol,
+                        comparable to that of Capivasertib and backed up by post-docking MM/GBSA analysis. Again,
+                        the
+                        prediction of pharmacokinetic properties and bioactivity scores of drug candidates revealed
+                        their drug-likeliness and safer ADMET profiles for future clinical trials. Finally, 100 ns
+                        MD
+                        simulation computation for these lead compounds exhibited greater stability and drug potency
+                        during interactions with AKT2 protein, followed by PCA and DCCM analysis. Conclusion:
+                        However,
+                        future in-vivo research can ascertain whether our proposed drug candidates can pass the
+                        standard
+                        clinical trials as publicly accessible novel drug targets.</p>
+                    <div class="pub-links">
+                        <a href="https://doi.org/10.1016/j.cmpb.2025.108793">📄 Paper</a>
+                        <a href="#"
+                            class="https://github.com/RSOmi05/In-Silico-study-to-identify-potential-AKT2-inhibitors-comparable-to-FDA-drug-Capivasertib">
+                            💻 Code</a>
+                    </div>
+                </div>
+            </div>
+            <div class="publication-item" id="pub-axl">
+                <img src="AXL.jpg" alt="Publication 1" class="pub-image">
+                <div class="pub-details">
+                    <div class="pub-title"><a
+                            href="https://ieeexplore.ieee.org/xpl/conhome/9733402/proceeding">"Predicting AXL
+                            Inhibition
+                            of Chemicals using Molecular Descriptors andMachine Learning Methods"</a></div>
+                    <div class="pub-authors">Mohammad Badhruddouza Khan, <strong>Rahat Shahrior</strong>, Ramisa
+                        Tasnia
+                        Asha and Pranto Soumik Saha</div>
+                    <div class="pub-venue">International Conference on Electrical Information and Communication
+                        Technology (EICT), 2021</div>
+                    <p class="pub-description">Breast cancer has become an emerging medical concern for women
+                        because of
+                        its intrusive potential of cynical growth factors and progressive rate of metastasis leading
+                        up
+                        to mortality with an alarming incidence rate so far. And lack of proper treatment or
+                        effective
+                        drugs can result in the poor survival of the patients affected. Since EMT endowing cancer
+                        cells
+                        work as a critical driver of metastasis, its effectors are supposed to serve prognostic
+                        sapience
+                        in establishing an affluent drug discovering strategy following AXL being a dominant factor
+                        in
+                        encountering the severity of the metastasis stage. AXL has been a conversant target showing
+                        prompt sensitivity for GAS6 signaling that is subsequently the predominant effector for
+                        cancer
+                        cell proliferation, metastasis, and tumor-promoting mechanisms. Our research work presented
+                        here
+                        can provide a technique so that the drug discovery of AXL inhibitors can be more effective
+                        and
+                        less time-consuming. The numerical value of bioactivity unit IC50 is considered the critical
+                        parameter for declaring an organic compound as active and inactive for AXL inhibition. Our
+                        thorough study has conducted on a dataset where 527 compounds were used to predict the value
+                        of
+                        bioactivity for AXL inhibition. Four different molecular descriptors deliberated in
+                        Lipinski’s
+                        rule of five that were calculated to build and train eight different classification models
+                        to
+                        enumerate the bioactivity values where the models were further evaluated using ten-fold
+                        cross-validation. Among all the classification models, Gradient Boosting has emerged to
+                        account
+                        the best performance with an accuracy of 85% and a F1-score of 0.77.</p>
+                    <div class="pub-links">
+                        <a href="https://ieeexplore.ieee.org/document/9733504">📄 Paper</a>
+                    </div>
+                </div>
+            </div>
+
+        </div>
+
+        <!-- SUBSECTION 2 -->
+        <div class="pub-subsection">
+            <h3>Biomedical Imaging & Computer Vision</h3>
+
+            <div class="publication-item" id="pub-plid">
+                <img src="Nature.png" alt="Publication 2" class="pub-image">
+                <div class="pub-details">
+                    <div class="pub-title"><a href="https://www.nature.com/articles/s41598-024-84301-7">"Automatic
+                            detection, classification, and segmentation of sagittal MR images
+                            for diagnosing prolapsed lumbar intervertebral disc"</a></div>
+                    <div class="pub-authors"> Md. Abu Sayed, G. Mahmudur Rahman, Md. Sherajul Islam, Md. Alimul
+                        Islam, Jeongwon Park, Hasan Ahmed and <strong>Rahat Shahrior</strong></div>
+                    <div class="pub-venue">Scientific Reports, Nature Portfolio, 2025</div>
+                    <p class="pub-description">Magnetic resonance (MR) images are commonly used to diagnose
+                        prolapsed
+                        lumbar intervertebral disc (PLID). However, for a computer-aided diagnostic (CAD) system,
+                        distinguishing between pathological abnormalities of PLID in MR images is a challenging and
+                        intricate task. Here, we propose a comprehensive model for the automatic detection and
+                        cropping
+                        of regions of interest (ROI) from sagittal MR images using the YOLOv8 framework to solve
+                        this
+                        challenge. We also propose weighted average ensemble (WAE) classification and segmentation
+                        models for the classification and the segmentation, respectively. YOLOv8 has good detection
+                        accuracy for both the lumbar region (mAP50=99.50%) and the vertebral disc (mAP50=99.40%).
+                        The use of ROI approaches enhances the accuracy of individual models. Specifically, the
+                        classification accuracy of the WAE classification model reaches 97.64%, while the
+                        segmentation
+                        model achieves a Dice value of 95.72%. This automatic technique would improve the diagnostic
+                        process by offering enhanced accuracy and efficiency in the assessment of PLID.</p>
+                    <div class="pub-links">
+                        <a href="https://www.nature.com/articles/s41598-024-84301-7">📄 Paper</a>
+                    </div>
+                </div>
+            </div>
+            <div class="publication-item" id="pub-dr">
+                <img src="bioengineering.png" alt="Publication 2" class="pub-image">
+                <div class="pub-details">
+                    <div class="pub-title"><a href="https://www.mdpi.com/2306-5354/10/4/413">"Automated Diagnosis of
+                            Diabetic Retinopathy Using Deep Learning: On the Search of Segmented Retinal Blood
+                            Vessel
+                            Images for Better Performance"</a></div>
+                    <div class="pub-authors"> Mohammad B. Khan, Mohiuddin Ahmad, Shamshul B. Yaakob, <strong>Rahat
+                            Shahrior</strong>, Mohd A. Rashid, and Hiroki Higa</div>
+                    <div class="pub-venue">Bioengineering, MDPI, 2024</div>
+                    <p class="pub-description">Diabetic retinopathy is one of the most significant retinal diseases
+                        that
+                        can lead to blindness. As a result, it is critical to receive a prompt diagnosis of the
+                        disease.
+                        Manual screening can result in misdiagnosis due to human error and limited human capability.
+                        In
+                        such cases, using a deep learning-based automated diagnosis of the disease could aid in
+                        early
+                        detection and treatment. In deep learning-based analysis, the original and segmented blood
+                        vessels are typically used for diagnosis. However, it is still unclear which approach is
+                        superior. In this study, a comparison of two deep learning approaches (Inception v3 and
+                        DenseNet-121) was performed on two different datasets of colored images and segmented
+                        images.
+                        The study’s findings revealed that the accuracy for original images on both Inception v3 and
+                        DenseNet-121 equaled 0.8 or higher, whereas the segmented retinal blood vessels under both
+                        approaches provided an accuracy of just greater than 0.6, demonstrating that the segmented
+                        vessels do not add much utility to the deep learning-based analysis. The study’s findings
+                        show
+                        that the original-colored images are more significant in diagnosing retinopathy than the
+                        extracted retinal blood vessels.</p>
+                    <div class="pub-links">
+                        <a href="https://www.mdpi.com/2306-5354/10/4/413">📄 Paper</a>
+                    </div>
+                </div>
+            </div>
+
+            <div class="publication-item" id="pub-privacy">
+                <img src="IEEE Access.png" alt="Publication 2" class="pub-image">
+                <div class="pub-details">
+                    <div class="pub-title">"Privacypreservenet: A Privacy Preserving Interpretable Deep Learning
+                        Model
+                        for Multiple Ocular Diseases Classification"</div>
+                    <div class="pub-authors"> Mohammad B. Khan, Mohiuddin Ahmad, <strong>Rahat Shahrior</strong>, Md
+                        Mahmudul Hasan, Mohd Abdur Rashid</div>
+                    <div class="pub-venue">IEEE Access, 2024</div>
+                    <p class="pub-description">Ocular diseases, especially AMD and DME have been one of the major
+                        retinal diseases affecting the human eye and causing blindness. Hence, the development of
+                        diagnosis tools for early detection of ocular diseases with high accuracy is of great
+                        importance. The existing diagnosis tools for these diseases come up with various challenges
+                        due
+                        to manual errors and confined medical facilities. Considering such challenges, a novel
+                        method
+                        based on deep learning model named PrivacyPreserveNet has been developed in this study. The
+                        developed model has been experimented on two public datasets (OCT_Tehran and OCT_DUKE).
+                        Along
+                        with mitigating privacy loss and data exposure, this model can provide sufficient accuracy
+                        and
+                        privacy. It was also found that the GradCAM can boost up our model’s interpretability to
+                        demonstrate the salient regions of the images that mostly contribute to the prediction made
+                        in
+                        terms of classifying the AMD, DME and normal groups. The results obtained by our developed
+                        model
+                        were compared with the results of three existing models (VGG16, ResNetV2 and Inception_V3).
+                        The
+                        comparison results revealed that our model provides high accuracy and ROC_AUC score of
+                        0.9677
+                        and 0.997 for dataset-1 and 0.9856 and 0.9998 for dataset-2, respectively.</p>
+                    <div class="pub-links">
+                        <a href="https://dx.doi.org/10.2139/ssrn.4980018">📄 Paper</a>
+                    </div>
+                </div>
+            </div>
+            <div class="publication-item" id="pub-leuko">
+                <img src="Leukocytes.png" alt="Publication 2" class="pub-image">
+                <div class="pub-details">
+                    <div class="pub-title"><a href="https://link.springer.com/chapter/10.1007/978-981-16-0586-4_6">"A
+                            CNN Based Deep Learning Approach for Leukocytes Classification in
+                            Peripheral Blood from Microscopic Smear Blood Images"</a></div>
+                    <div class="pub-authors"> Mohammad Badhruddouza Khan, Tobibul Islam, Mohiuddin Ahmad,
+                        <strong>Rahat
+                            Shahrior</strong> and Zannatun Naiem Riya
+                    </div>
+                    <div class="pub-venue">Algorithms for Intelligent Systems, 2021</div>
+                    <p class="pub-description">As a cardinal sign of the pathological condition of human health,
+                        WBC also known as leukocytes have prominently regulated a functional role in
+                        the body’s immune system. So, the classification of white blood cells has been
+                        kept on great precedence in the diagnosis of hematological diseases such as
+                        leukemia or any kind of blood cancers even AIDS so. But the evaluation
+                        process is quite complicated and painstaking as leukocytes include a series of
+                        variety within it. Following the drawbacks, deep learning can offer much
+                        refinement in the classification manner of leukocytes. Especially, the
+                        convolutional neural network i.e. CNN, an advanced and sophisticated
+                        technology that has been conceded widespread as a compatible approach
+                        regarding the visual image analysis. Thus considering the pledges, a new
+                        approach has been introduced in this paper based on a precisely established
+                        CNN model with an adjuration of outrun the traditional approaches proposed
+                        before that includes multiple complicated steps such as preprocessing,
+                        segmentation, feature extraction and so on in classifying four types of white
+                        blood cells. The model is established on a feasible study and a series of
+                        experiments conducted on large-scale training sets of 9,957 annotated blood
+                        smear images of WBCs (neutrophils, eosinophils, monocytes, and lymphocytes)
+                        to perceive a hierarchical manner of learning and understanding automatically.
+                        And then the detection model is evaluated on test sets of 2,487 annotated blood
+                        smear images of WBCs. This diligent research results in salient recognition
+                        performance in classifying four types of WBCs with an accuracy of 98% on
+                        average. So, our proposed customized model can be used in the real-life
+                        healthcare sector for identifying diseases that also reduce the disease
+                        detection cost.</p>
+                    <div class="pub-links">
+                        <a href="https://link.springer.com/chapter/10.1007/978-981-16-0586-4_6">📄 Paper</a>
+                    </div>
+                </div>
+            </div>
+            <div class="publication-item" id="pub-bc">
+                <img src="Metastasis.jpg" alt="Publication 2" class="pub-image">
+                <div class="pub-details">
+                    <div class="pub-title"><a href="https://ieeexplore.ieee.org/document/9641195">"Feasible
+                            Detection of
+                            Breast Cancer Metastasis using a CNN-based Deep Learning Model"</a></div>
+                    <div class="pub-authors"> Mohammad B. Khan, Pranto S. Saha and <strong>Rahat Shahrior</strong>
+                    </div>
+                    <div class="pub-venue">International Conference on Electronics, Communications and Information
+                        Technology (ICECIT), 2021</div>
+                    <p class="pub-description">Breast cancer is a comprehensively dreadful
+                        disease that primarily affects women worldwide. In a lifetime,
+                        one out of every eight women is diagnosed with breast cancer.
+                        The probability of patient survival rate increases if it is
+                        properly diagnosed at the benign stage. However, when a
+                        cancer cell metastasizes out from its original development site,
+                        it enters into a secondary stage with increasing aggression,
+                        infecting other organs via the bloodstream and lymph system.
+                        At this stage, the cancer cells become life-threatening, and the
+                        survival rate of patients falls drastically. So it is evident that
+                        early diagnosis is essential to minimize the extent of the
+                        metastasis. Traditional diagnostics procedures by a
+                        pathologist are time-consuming and subject to human error.
+                        In this study, a custom-designed CNN network is proposed to
+                        distinguish metastasis cells from non-metastasis cells from
+                        histopathological breast cancer images. This proposed model
+                        has obtained an impressive training accuracy of 94.98% and
+                        a validation accuracy of 94.08%. The achieved average area
+                        under the receiver operating characteristic curve (AUC), F1-
+                        score, recall, and precision of the CNN model are respectively-
+                        0.985, 0.94, 0.94, and 0.94. The experimental studies
+                        demonstrate the proposed model’s ability to distinguish
+                        metastasis cells with high accuracy.</p>
+                    <div class="pub-links">
+                        <a href="https://ieeexplore.ieee.org/document/9641195">📄 Paper</a>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div style="text-align: center; margin-top: 2rem;">
+            <a href="#full-publications-list" class="btn">View All Publications ↓</a>
+        </div>
+    </section>
+
+
+
+
+    <!-- ========================================
+         EDUCATION SECTION
+         INSTRUCTIONS:
+         Copy the timeline-item div for each degree
+         ======================================== -->
+    <section id="education">
+        <h2>🎓 Education</h2>
+        <div class="timeline">
+            <!-- EDUCATION ITEM 1 - Copy for more degrees -->
+            <div class="timeline-item">
+                <div class="timeline-date">2018 – 2023</div>
+                <h3 class="timeline-title">Bachelor of Science (BSc.) in Biomedical Engineering</h3>
+                <div class="timeline-org">Khulna University of Engineering & Technology, Khulna, Bangladesh</div>
+                <div class="timeline-description">
+                    <p>GPA: [3.12 / 4.00; First Class]</p>
+                    <p>Thesis: In silico drug design for prediction of potential active drug targets against Akt2
+                        (RAC-beta serine/threonine-protein kinase) proteins using machine learning, molecular
+                        docking
+                        and ADMET analysis targeting multiple carcinomas treatments</p>
+                    <p>Awards: Technical Scholarships from the University Grants Commission of Bangladesh (UGC)</p>
+                </div>
+            </div>
+
+            <!-- EDUCATION ITEM 2 -->
+            <div class="timeline-item">
+                <div class="timeline-date"> 2015 - 2017 </div>
+                <h3 class="timeline-title">Higher Secondary Certificate (HSC)</h3>
+                <div class="timeline-org">Notre Dame College, Dhaka, Bangladesh</div>
+                <div class="timeline-description">
+                    <p>Major: Science</p>
+                    <p>GPA: [5.00 / 5.00]</p>
+                </div>
+            </div>
+            <!-- EDUCATION ITEM 2 -->
+            <div class="timeline-item">
+                <div class="timeline-date"> 2013 - 2015 </div>
+                <h3 class="timeline-title">Secondary School Certificate (SSC)</h3>
+                <div class="timeline-org">National Ideal School and College, Dhaka, Bangladesh</div>
+                <div class="timeline-description">
+                    <p>Major: Science</p>
+                    <p>GPA: [5.00 / 5.00]</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+
+    <!-- ========================================
+         EXPERTISE SECTION
+         ======================================== -->
+    <section id="expertise">
+        <h2>🛠️ Technical Expertise</h2>
+
+        <div class="expertise-subsection">
+            <h3 class="expertise-category">Programming Languages</h3>
+            <div class="skill-capsules">
+                <span class="skill-capsule">Python</span>
+                <span class="skill-capsule">SQL</span>
+                <span class="skill-capsule">MATLAB</span>
+            </div>
+        </div>
+
+        <div class="expertise-subsection">
+            <h3 class="expertise-category">Machine Learning</h3>
+            <div class="skill-capsules">
+                <span class="skill-capsule">PyTorch</span>
+                <span class="skill-capsule">Scikit-learn</span>
+                <span class="skill-capsule">Pandas</span>
+                <span class="skill-capsule">NumPy</span>
+                <span class="skill-capsule">TensorFlow</span>
+                <span class="skill-capsule">Keras</span>
+                <span class="skill-capsule">LangChain</span>
+                <span class="skill-capsule">n8n</span>
+                <span class="skill-capsule">Hugging Face</span>
+                <span class="skill-capsule">OpenCV</span>
+            </div>
+        </div>
+
+        <div class="expertise-subsection">
+            <h3 class="expertise-category">Computational Biology and Structural Bioinformatics</h3>
+            <div class="skill-capsules">
+                <span class="skill-capsule">AutoDock Vina</span>
+                <span class="skill-capsule">PyRx</span>
+                <span class="skill-capsule">BIOVIA Discovery Studio</span>
+                <span class="skill-capsule">UCSF Chimera</span>
+                <span class="skill-capsule">GROMACS</span>
+                <span class="skill-capsule">EMBOSS Needle</span>
+                <span class="skill-capsule">Open Babel GUI</span>
+                <span class="skill-capsule">Swiss PDB Viewer</span>
+                <span class="skill-capsule">MGLTools</span>
+            </div>
+        </div>
+
+
+
+        <div class="expertise-subsection">
+            <h3 class="expertise-category">Other Software & Tools</h3>
+            <div class="skill-capsules">
+                <span class="skill-capsule">MySQL</span>
+                <span class="skill-capsule">Antigravity</span>
+                <span class="skill-capsule">ClickUp</span>
+                <span class="skill-capsule">Git</span>
+                <span class="skill-capsule">Notion</span>
+                <span class="skill-capsule">Google Colab</span>
+                <span class="skill-capsule">WordPress</span>
+                <span class="skill-capsule">PostgreSQL</span>
+                <span class="skill-capsule">Retool</span>
+                <span class="skill-capsule">Canva</span>
+                <span class="skill-capsule">G Suite</span>
+                <span class="skill-capsule">Microsoft Office Suite</span>
+
+            </div>
+        </div>
+
+    </section>
+
+    <!-- ========================================
+         EXTRACURRICULAR ACTIVITIES SECTION
+         ======================================== -->
+    <div class="section-alt">
+        <section id="extracurricular">
+            <h2>🌟 Extracurricular Activities</h2>
+            <div class="timeline">
+                <!-- ACTIVITY 1 -->
+                <div class="timeline-item">
+                    <div class="timeline-date">2022 – 2023</div>
+                    <h3 class="timeline-title">Vice President</h3>
+                    <div class="timeline-org">NeuralNET: Artificial Intelligence Club of KUET</div>
+                    <div class="timeline-description">
+                        <ul style="margin-top: 0.5rem; margin-left: 1.5rem;">
+                            <li>Conducted specialized workshops on machine learning, and internal
+                                peer-reviewed sessions for documented research works.</li>
+                            <li>Supervised high-level research projects focusing on the healthcare applications of
+                                AI, ensuring successful implementation.</li>
+                            <li>Spearheaded the establishment of research interest groups (RIGs) by mentoring 15+
+                                students in collaborative research.</li>
+                        </ul>
+
+                    </div>
+                </div>
+
+                <!-- ACTIVITY 2 -->
+                <div class="timeline-item">
+                    <div class="timeline-date">2023 – 2024</div>
+                    <h3 class="timeline-title">Executive Member </h3>
+                    <div class="timeline-org">Light of Hopes Youth Foundation</div>
+                </div>
+            </div>
+        </section>
+    </div>
+
+    <!-- ========================================
+         NEWS SECTION
+         INSTRUCTIONS:
+         Copy the news-item div for each news item
+         ======================================== -->
+    <section id="news">
+        <h2>📰 Latest News</h2>
+        <div class="news-grid">
+            <!-- NEWS ITEM 1 - Copy this entire div for more items -->
+            <div class="news-item">
+                <div class="news-date">November 2024</div>
+                <p>Promoted to Jr. Research Associate Position for the HEAT ATF Project</p>
+            </div>
+            <!-- ADD MORE NEWS ITEMS BY COPYING THE ABOVE DIV -->
+        </div>
+    </section>
+
+    <!-- ========================================
+         CONTACT SECTION
+         INSTRUCTIONS:
+         Update your email, office, and social links
+         ======================================== -->
+    <div class="section-alt">
+        <section id="contact">
+            <h2>📬 Get In Touch</h2>
+            <div class="contact-wrapper">
+                <!-- Left Column: Info -->
+                <div class="contact-info">
+
+                    <div class="contact-info-block">
+                        <div class="contact-info-icon"><i class="fa-regular fa-envelope"></i></div>
+                        <div class="contact-info-text">
+                            <h3>Email</h3>
+                            <p>rahat.shahrior05@gmail.com</p>
+                        </div>
+                    </div>
+
+                    <div class="contact-info-block">
+                        <div class="contact-info-icon"><i class="fa-solid fa-phone"></i></div>
+                        <div class="contact-info-text">
+                            <h3>Phone</h3>
+                            <p>+8801975714851</p>
+                        </div>
+                    </div>
+
+                    <div class="contact-info-block">
+                        <div class="contact-info-icon"><i class="fa-solid fa-location-dot"></i></div>
+                        <div class="contact-info-text">
+                            <h3>Office</h3>
+                            <p>AIMS Lab, IRIIC, United International University.</p>
+                            <p>United City, Madani Avenue, Satarkul, Badda, Dhaka 1212, Bangladesh.</p>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Right Column: Form -->
+                <div class="contact-form">
+                    <div class="form-group">
+                        <label>Name</label>
+                        <input type="text" placeholder="Your name">
+                    </div>
+
+                    <div class="form-group">
+                        <label>Email</label>
+                        <input type="email" placeholder="your.email@example.com">
+                    </div>
+
+                    <div class="form-group">
+                        <label>Message</label>
+                        <textarea rows="5" placeholder="Your message..."></textarea>
+                    </div>
+
+                    <button class="btn-submit">
+                        <i class="fa-regular fa-paper-plane"></i> Send Message
+                    </button>
+                </div>
+            </div>
+        </section>
+    </div>
+
+    <!-- ========================================
+         FOOTER
+         INSTRUCTIONS:
+         Update your name and copyright year
+         ======================================== -->
+    <footer>
+        <p>© 2024 [YOUR NAME]. All rights reserved.</p>
+        <p>Last updated: [Current Date]</p>
+    </footer>
+
+    <!-- ========================================
+         JAVASCRIPT FOR MOBILE MENU
+         No need to edit this
+         ======================================== -->
+    <script>
+        function toggleMenu() {
+            const navLinks = document.getElementById('navLinks');
+            navLinks.classList.toggle('active');
+        }
+
+        // Smooth scrolling for navigation links
+        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+            anchor.addEventListener('click', function (e) {
+                e.preventDefault();
+                const target = document.querySelector(this.getAttribute('href'));
+                if (target) {
+                    target.scrollIntoView({
+                        behavior: 'smooth',
+                        block: 'start'
+                    });
+                    // Close mobile menu if open
+                    document.getElementById('navLinks').classList.remove('active');
+                }
+            });
+        });
+
+        // Copy citation to clipboard
+        function copyCitation(text) {
+            navigator.clipboard.writeText(text).then(function () {
+                alert('Citation copied to clipboard!');
+            }).catch(function (err) {
+                console.error('Could not copy text: ', err);
+                alert('Failed to copy citation.');
+            });
+        }
+
+        // Publication filtering
+        document.querySelectorAll('.pub-tab').forEach(tab => {
+            tab.addEventListener('click', function () {
+                // Remove active class from all tabs
+                document.querySelectorAll('.pub-tab').forEach(t => t.classList.remove('active'));
+                // Add active class to clicked tab
+                this.classList.add('active');
+
+                const filter = this.getAttribute('data-filter');
+                const items = document.querySelectorAll('.pub-list-item');
+
+                items.forEach(item => {
+                    if (filter === 'all' || item.getAttribute('data-category') === filter) {
+                        item.style.display = 'flex';
+                    } else {
+                        item.style.display = 'none';
+                    }
+                });
+            });
+        });
+    </script>
+</body>
+
+</html>
